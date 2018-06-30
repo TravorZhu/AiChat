@@ -17,7 +17,6 @@ import com.baidu.tts.client.SpeechSynthesizer;
 import com.baidu.tts.client.TtsMode;
 import com.google.gson.Gson;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -88,11 +87,7 @@ public class MainActivity extends AppCompatActivity {
                 if (Objects.equals(s, ""))
                     return;
                 addBean(s, 0);
-                try {
                     new PostAi().post(s, handler);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
             }
         };
         aliAsr = new AliAsr(MainActivity.this, editText, handler_voice);
@@ -135,11 +130,8 @@ public class MainActivity extends AppCompatActivity {
 
                 }
                 addBean(text, 0);
-                try {
-                    new PostAi().post(text, handler);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+                new PostAi().post(text, handler);
+
             }
         });
     }
